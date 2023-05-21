@@ -1,9 +1,11 @@
 class cuentas:
-    def __init__(self, correo, contraseña, telefono, tipo):
+    def __init__(self, correo, contraseña, telefono, tipo): #creación del constructor de la clase con sus variables
         self.correo = correo
         self.contraseña = contraseña
         self.telefono = telefono
         self.tipo = tipo
+    
+    #gets y sets de cada variable
     
     def getCorreo (self):
         return self.correo
