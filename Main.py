@@ -1,5 +1,6 @@
 import os
 import usuarios
+import cuentas
 from neo4j import GraphDatabase
 
 class Main: 
@@ -18,7 +19,12 @@ class Main:
         opcionMenu = input("Elige una opción ")
         if opcionMenu=="1":
             print ("Por favor ingrese sus credenciales")
-            input("opción 1")
+            cuentaE = cuentas(correo,contraseña,telefono,tipo)
+            correo = input("Por favor ingrese su correo electrónico ->   ")
+            contraseña = input("Por favor ingrese su contraseña ->   ")
+            telefono = input("Por favor ingrese su número de teléfono ->   ")
+            tipo = input("Por favor ingrese el tipo ->   ")
+            
         elif opcionMenu=="2":
             print ("")
             input("Has pulsado la opción 2")
