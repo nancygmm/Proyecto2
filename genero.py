@@ -1,8 +1,10 @@
 class Genero:
+    #Constructor
     def __init__(self, nombre, compatibilidad):
         self._nombre = nombre
         self._compatibilidad = compatibilidad
-        
+    
+    #gets y sets
     def get_nombre(self):
         return self._nombre
 
