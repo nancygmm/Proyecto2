@@ -12,15 +12,15 @@ class Main:
         print("¿Ya tienes una cuenta?")
         print ("\t1 -> Si :) ")
         print ("\t2 -> No :( ")
-        print ("\t4 -> salir")
+        print ("\t3 -> salir")
     
     while True:
         menu()
         opcionMenu = input("Elige una opción ")
         if opcionMenu=="1":
             print ("Por favor ingrese sus credenciales")
-            cuentaE = cuentas(correo,contraseña,telefono,tipo)
-            correo = input("Por favor ingrese su correo electrónico ->   ")
+            cuentaE = cuentas()
+            #correo = input("Por favor ingrese su correo electrónico ->   ")
             contraseña = input("Por favor ingrese su contraseña ->   ")
             telefono = input("Por favor ingrese su número de teléfono ->   ")
             tipo = input("Por favor ingrese el tipo ->   ")
