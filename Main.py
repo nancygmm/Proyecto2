@@ -20,7 +20,7 @@ class Main:
         if opcionMenu=="1":
             print ("Por favor ingrese sus credenciales")
             cuentaE = cuentas()
-            #correo = input("Por favor ingrese su correo electrónico ->   ")
+            correo = input("Por favor ingrese su correo electrónico ->   ")
             contraseña = input("Por favor ingrese su contraseña ->   ")
             telefono = input("Por favor ingrese su número de teléfono ->   ")
             tipo = input("Por favor ingrese el tipo ->   ")
