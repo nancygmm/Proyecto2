@@ -6,7 +6,7 @@ class Main:
         """
         Función que limpia la pantalla y muestra nuevamente el menu
         """
-        os.system('clear') # NOTA para windows tienes que cambiar clear por cls
+        os.system('clear')
         print ("Bienvenido")
         print ("\t1 -> primera opción")
         print ("\t2 -> segunda opción")
@@ -15,10 +15,8 @@ class Main:
     
     
     while True:
-        # Mostramos el menu
         menu()
-    
-        # solicituamos una opción al usuario
+
         opcionMenu = input("Elige una opción ")
         if opcionMenu=="1":
             print ("")
