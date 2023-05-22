@@ -5,33 +5,40 @@ from neo4j import GraphDatabase
 
 class Main: 
     
-    def menu():
-        
-        os.system('clear')
-        print ("Bienvenido a teleflix")
-        print("¿Ya tienes una cuenta?")
-        print ("\t1 -> Si :) ")
-        print ("\t2 -> No :( ")
-        print ("\t3 -> salir")
-    
-    while True:
-        menu()
-        opcionMenu = input("Elige una opción ")
-        if opcionMenu=="1":
-            print ("Por favor ingrese sus credenciales")
-            correo = input("Por favor ingrese su correo electrónico ->   ")
-            contraseña = input("Por favor ingrese su contraseña ->   ")
-            telefono = input("Por favor ingrese su número de teléfono ->   ")
-            tipo = input("Por favor ingrese el tipo ->   ")
-            Ncuenta=cuentas(correo, contraseña, telefono, tipo)
-            
-        elif opcionMenu=="2":
-            print ("Ingresa la información que se te solicita")
-            
-        elif opcionMenu=="4":
-            break
+    def __init__(self):
+        self.menu()
+    def menu(self):
+        os.system("clear")
+        print("############################       BIENVENIDO A UVG-FLIX          ########################")
+        print("1. Ya tienes cuenta :D ")
+        print("2. No tienes cuenta D: ")
+
+        #PRUEBA
+        lista=["prueba1@gmail.com","prueba2@gmail.com","prueba3@gmail.com","prueba4@gmail.com"]##<--Tiene que traerlo de la base de datos 
+        seleccion=input("--> ")
+        if seleccion=="1":
+            correo=input("Ingresa el correo ")
+            passw=input("Ingresa el password ")
+            if correo in lista:
+                print("Si existe ")
+            else:
+                print("La cuenta no existe, es necesario crear una ")
+
+        elif seleccion=="2":
+            nombre=input("Ingresa tu nombre ")
+            apellido=input("Ingresa tu apellido ")
+            edad=input("Ingresa tu edad ")
+            tipo=""
+            if int(edad)>=15 and int(edad)<=18:
+                tipo="b"
+            elif int(edad)>=18:
+                tipo="a"
+            else:
+                tipo="c"
+                
+
         else:
-            print ("")
-            input("Opción no válida")
+            print("Ingresa un valor correcto ")
+Main()
     
     
