@@ -1,6 +1,6 @@
 #Se crea la clase de persona
 class pelicula:
-    #Aquí se definen los atributos de esta clase,  los atributos son: nombre, director, actores, generos, saga
+    #Aquí se definen los atributos de esta clase, los atributos son: nombre, director, actores, generos, saga
     def __init__(self,nombre,director,actores,generos,saga):
         self.nombre=nombre
         self.director=director
