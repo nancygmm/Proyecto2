@@ -1,15 +1,30 @@
+from py2neo import Graph
+import pandas as pd
 import ManejoBd
 
 manejo=ManejoBd.manejoBd()
 
+driver=manejo.conectar()
 
-#query = "MATCH (n) RETURN n"
-#query="Gaby"
-#manejo.crearUsuario(query)
+query="""
+MATCH (n)
+OPTIONAL MATCH (n)-[r]->(m)
+RETURN n,r,m
+"""
+result=driver.execute_query(query)
 
-genero="Titanes del pacifica "
-manejo.crearPelicula(genero)
-#for i in result:
-#    nodo=i["n"]
-#    print(nodo)
-#    print(nodo["name"])
+resultado=result.data()
+
+data=[]
+for i in resultado:
+    nodo=i['n']
+    relacion=i['r']
+    nodoRelacionado=i['m']
+    data.append({
+        "nodo":nodo['name'],
+        "relacion":relacion['name'],
+        'Nodo relacionado':nodoRelacionado['name']
+    })
+
+    df=pd.DataFrame(data,columns=['Nodo',"Relacion","Nodo relacionado "])
+    df.to_csv("prueba.csv",index=False)

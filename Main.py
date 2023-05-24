@@ -7,6 +7,9 @@ class Main:
     
     def __init__(self):
         self.menu()
+        self.banderaPrimeraVez=False
+    def index(self):
+        pass
     def menu(self):
         os.system("clear")
         print("############################       BIENVENIDO A UVG-FLIX          ########################")
@@ -35,6 +38,7 @@ class Main:
                 tipo="a"
             else:
                 tipo="c"
+            
                 
 
         else:
