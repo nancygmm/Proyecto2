@@ -1,6 +1,7 @@
 import os
 import usuarios
 import cuentas
+import ManejoBd
 from neo4j import GraphDatabase
 
 class Main: 
@@ -8,22 +9,23 @@ class Main:
     def __init__(self):
         self.menu()
         self.banderaPrimeraVez=False
-    def index(self):
-        pass
     def menu(self):
         os.system("clear")
         print("############################       BIENVENIDO A UVG-FLIX          ########################")
-        print("1. Ya tienes cuenta :D ")
-        print("2. No tienes cuenta D: ")
+        print("1. Iniciar sesion")
+        print("2. Crear cuenta")
+
+        BD = ManejoBd.manejoBd()
 
         #PRUEBA
         lista=["prueba1@gmail.com","prueba2@gmail.com","prueba3@gmail.com","prueba4@gmail.com"]##<--Tiene que traerlo de la base de datos 
         seleccion=input("--> ")
         if seleccion=="1":
-            correo=input("Ingresa el correo ")
+            nombre=input("Ingresa el nombre del usuario ")
             passw=input("Ingresa el password ")
+            
             if correo in lista:
-                print("Si existe ")
+                print("Bienvenido a UVG-FLIX")
             else:
                 print("La cuenta no existe, es necesario crear una ")
 
