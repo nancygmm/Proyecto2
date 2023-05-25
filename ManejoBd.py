@@ -25,44 +25,59 @@ class manejoBd:
         result = session.write_transaction(
             lambda tx: tx.run("CREATE (p:Pelicula {name: $pelicula}) RETURN p", pelicula=pelicula)
         )
-    def exportarCSV(self):
-       with self.driver.session() as session:
-        # Consulta para obtener todos los nodos y relaciones
-        consulta = '''
+    def obtener_relaciones_pelicula_genero(self):
+        driver = self.conectar()
         
-        MATCH (p)-[PERTENECE]->(g) "
-                "WHERE ID(p) = $nodo_id_1 AND ID(g) = $nodo_id_2 "
-                "RETURN p,PERTENECE, g
-           '''
+        with driver.session() as session:
+            query = "MATCH (p:pelicula)-[:PERTENECE]->(g:Genero) RETURN p, collect(g) AS generos"
+            result = session.run(query)
 
-        # Ejecutar la consulta
-        resultados = session.run(consulta)
+            relaciones = {}
+            for record in result:
+                pelicula = tuple(record["p"].items())
+                generos = [dict(g) for g in record["generos"]]
+                relaciones[pelicula] = generos
 
-        with open("archivo.csv", 'w', newline='') as archivo:
-            writer = csv.writer(archivo)
+            return relaciones
+    def obtenerGeneros(self):
+      driver=self.conectar()
 
-            # Escribir encabezados de columnas
-            writer.writerow(['Tipo', 'Propiedades'])
+      with driver.session() as session:
+            # Ejecutar una consulta Cypher para obtener los nodos de tipo pelicula
+            query = "MATCH (g:Genero) RETURN g"
+            result = session.run(query)
 
-            # Escribir nodos y propiedades
-            for registro in resultados:
-                nodo = registro['g']
-                tipo = list(nodo.labels)[0]  # Obtener el tipo del nodo
-                propiedades = dict(nodo)  # Obtener las propiedades del nodo
-                writer.writerow([tipo, propiedades])
+            # Recorrer los resultados y obtener los nodos de tipo pelicula
+            generos = []
+            for record in result:
+                pelicula = record["g"]
+                generos.append(pelicula['name'])
 
-                # Escribir relaciones y propiedades
-                #for relacion in registro['p']:
-                #    tipo_relacion = relacion.type
-                #    propiedades_relacion = dict(relacion)
-                #    writer.writerow([tipo_relacion, propiedades_relacion])
+            return generos
+    def obtenerPeliculas(self):
+      driver=self.conectar()
 
-    print("Exportación a CSV completada.")
-app=manejoBd()
-app.exportarCSV()
-       
-            
+      with driver.session() as session:
+            # Ejecutar una consulta Cypher para obtener los nodos de tipo pelicula
+            query = "MATCH (p:pelicula) RETURN p"
+            result = session.run(query)
 
+            # Recorrer los resultados y obtener los nodos de tipo pelicula
+            peliculas = []
+            for record in result:
+                pelicula = record["p"]
+                peliculas.append(pelicula['name'])
 
+            return peliculas
 
-
+    def obtenerRelaciones(self):
+       diccionario_relaciones = self.obtener_relaciones_pelicula_genero()
+       diccionarioPeliculaGenero={}
+       for pelicula, generos in diccionario_relaciones.items():
+            dicciAuxi=dict(pelicula)
+            peli=dicciAuxi['name']
+            listaGeneros=[]
+            for i in generos:
+                listaGeneros.append(i['name'])
+                diccionarioPeliculaGenero[peli]=listaGeneros   
+       return diccionarioPeliculaGenero

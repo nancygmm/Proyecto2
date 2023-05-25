@@ -1,30 +1,46 @@
-from py2neo import Graph
-import pandas as pd
 import ManejoBd
-
+import random
 manejo=ManejoBd.manejoBd()
+dicc=manejo.obtenerRelaciones()
+diccionarioGeneros1={}
+diccionarioGeneros2={}
+diccionarioGeneros3={}
+xxx=manejo.obtenerGeneros()
+for i in xxx:
+    diccionarioGeneros1[i]=0
+    diccionarioGeneros2[i]=0
+    diccionarioGeneros3[i]=0
 
-driver=manejo.conectar()
 
-query="""
-MATCH (n)
-OPTIONAL MATCH (n)-[r]->(m)
-RETURN n,r,m
-"""
-result=driver.execute_query(query)
 
-resultado=result.data()
 
-data=[]
-for i in resultado:
-    nodo=i['n']
-    relacion=i['r']
-    nodoRelacionado=i['m']
-    data.append({
-        "nodo":nodo['name'],
-        "relacion":relacion['name'],
-        'Nodo relacionado':nodoRelacionado['name']
-    })
 
-    df=pd.DataFrame(data,columns=['Nodo',"Relacion","Nodo relacionado "])
-    df.to_csv("prueba.csv",index=False)
+pelis=list(dicc.keys())
+
+listaMeGusta=[]
+
+contador=0
+while contador<3:
+    ra=random.randint(0,len(pelis)-1)
+    print(f"Te gusta la pelicula {pelis[ra]}? ")
+    seleccion=input("--> ")
+    if seleccion=="si":
+        listaMeGusta.append(pelis[ra])
+        contador+=1
+print(listaMeGusta)
+
+
+
+
+
+
+def creacionMatriz(lista):
+    l=[]
+    for i in range(len(lista)):
+        f=[]
+        for j in range(len(xxx)):
+            f.append(0)
+        l.append(f)
+    print(l)
+matriz=creacionMatriz(listaMeGusta)
+
