@@ -40,12 +40,14 @@ class Main:
         elif seleccion=="2":
             nombre=input("Ingresa el nombre del nuevo usuario: ")
             passwN=input("Ingresa la nueva contraseña: ")
-            
+            BD.crearUsuario(self,nombre)
+            contraseñas.append(passwN)
             
                 
 
         else:
             print("Ingresa un valor correcto ")
+            
 Main()
     
     
