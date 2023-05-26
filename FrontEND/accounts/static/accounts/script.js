@@ -9,12 +9,39 @@ function submitForm() {
     var total = 0; 
 
     const datos = [];
+
+    for (var i = 0; i < rating.length; i++) {
+        if (rating[i] > 0) {
+            var nuevoElemento = [peliculas[i],rating[i]]
+            datos.push(nuevoElemento);
+            total ++;
+    }
+    
+    function crearCSV(datos) {
+        // Crear el contenido del archivo CSV
+        let contenidoCSV = '';
+        datos.forEach((fila) => {
+          contenidoCSV += fila.join(',') + '\n';
+        });
+      
+        // Crear un objeto Blob
+        const blob = new Blob([contenidoCSV], { type: 'text/csv' });
+      
+        // Crear un enlace de descarga
+        const enlaceDescarga = document.createElement('a');
+        enlaceDescarga.href = URL.createObjectURL(blob);
+        enlaceDescarga.download = 'datos.csv';
+      
+        // Simular clic en el enlace para iniciar la descarga
+        enlaceDescarga.click();
+      }
+      
+      
+      crearCSV(datos);
+    // Aquí puedes hacer cualquier acción necesaria con las calificaciones seleccionadas
+  
+    document.getElementById('rating-form').submit();
 }
 
-for (var i = 0; i < rating.length; i++) {
-    if (rating[i] > 0) {
-        var nuevoElemento = [peliculas[i],rating[i]]
-        datos.push(nuevoElemento);
-        total ++;
-}
+
 }
