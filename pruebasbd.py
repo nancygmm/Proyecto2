@@ -79,7 +79,11 @@ def calcularPob(matriz):
         suma=matriz[0][i]+matriz[1][i]+matriz[2][i]
         lista.append(round(suma/15,2))
     return lista
-print(calcularPob(matrizValores))
+
+l=calcularPob(matrizValores)
+
+
+
 
 
 
