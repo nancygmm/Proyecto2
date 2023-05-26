@@ -22,3 +22,6 @@ class Genero:
         return self._compatibilidad
     def set_compatibilidad(self, compatibilidad):
         self._compatibilidad = compatibilidad
+
+
+
