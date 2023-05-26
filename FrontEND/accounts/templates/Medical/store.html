@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>POPCORN & CHILL</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+  }
+
+  .header-logo {
+    margin-right: 5px;
+  }
+
+  .header-title {
+    flex-grow: 1;
+    font-size: 60px;
+  }
+
+
+
+  .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+  background: #262b2a;
+  color: white;
+}
+
+.form-container {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.search-form {
+  display: inline-block;
+}
+
+.authentication-container {
+  margin-left: 20px;
+}
+
+.logout-link,
+.login-link {
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+}
+
+.logout-link:hover,
+.login-link:hover {
+  text-decoration: underline;
+}
+
+
+
+.row {  
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap; 
+  flex-wrap: wrap;
+}
+
+
+.side {
+  -ms-flex: 20%;
+  flex: 20%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+
+.main {   
+  -ms-flex: 70%; 
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+
+.xnamefname {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+
+
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20mm;
+  margin-top: 1mm; /* Adjust the top margin as needed */
+}
+.search-form {
+  text-align: center;
+  font-size: 24px; /* Adjust the font size as desired */
+}
+.palabra-buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 30px 20px;
+}
+
+.palabra-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    
+}
+.rating-buttons {
+    display: flex;
+}
+
+.rating-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ffd700;
+    margin-right: 5px;
+    padding: 0;
+}
+
+.rating-button:hover {
+    color: #ffcc00;
+}
+
+
+
+#menu-filtros {
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  width: 250px;
+}
+
+#menu-filtros h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#menu-filtros ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 10px;
+}
+
+#menu-filtros li {
+  margin-bottom: 5px;
+}
+
+#menu-filtros label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+#menu-filtros input[type="checkbox"] {
+  vertical-align: middle;
+}
+
+#menu-filtros textarea {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+#btn-aplicar-filtros {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#btn-aplicar-filtros:hover {
+  background-color: #45a049;
+}
+
+.grafica {
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.barra {
+  height: 100%;
+  background-color: #4CAF50;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gallery a {
+    text-decoration: none;
+    margin: 10px;
+    text-align: center;
+}
+
+.gallery img {
+    width: 200px;
+    height: 200px;
+}
+
+.gallery p {
+    margin-top: 5px;
+}
+
+select {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: #333;
+  font-size: 16px;
+}
+
+option {
+  padding: 10px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">
+    <img src="../../static/accounts/poporopos.jpg" alt="Logo" height="125px" width="125px">
+  </div>
+    <h1 class="header-title">POPCORN & CHILL</h1>
+  {% if user.is_authenticated %}
+    Hola {{ user.username }}!
+    {% else %}
+    <p>Progra UVG</p>
+    {% endif %}
+
+</div>
+
+<div class="navbar">
+  <div class="form-container">
+    <form class="search-form">
+      <input type="text" name="search" placeholder="Buscar..." style="font-size: 24px;">
+      <input type="submit" value="Buscar" style="font-size: 24px;">
+    </form>
+  </div>
+  <div class="authentication-container">
+    {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}" class="logout-link">Cerrar Sesión</a>
+    {% else %}
+      <a href="{% url 'login' %}" class="login-link">Inicio de Sesión / Registrarse</a>
+    {% endif %}
+  </div>
+</div>
+
+<div class="row">
+  <div id="menu-filtros">
+    <h3>Filtros</h3>
+    <ul>
+      <li>
+        <input type="checkbox" id="filtro-anio-otros">
+        <label for="filtro-anio-otros">Otros años...</label>
+        <input type="text" id="filtro-anio-inicial" placeholder="Desde">
+        <input type="text" id="filtro-anio-final" placeholder="Hasta">
+      </li>
+    </ul>
+    
+    <ul id="rating-filtro">
+      <li>
+        <input type="checkbox" id="filtro-rating-5">
+        <label for="filtro-rating-5">5 estrellas</label>
+        <div class="grafica">
+          <div class="barra" style="width: 100%"></div>
+        </div>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-rating-4">
+        <label for="filtro-rating-4">4 estrellas</label>
+        <div class="grafica">
+          <div class="barra" style="width: 80%"></div>
+        </div>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-rating-3">
+        <label for="filtro-rating-3">3 estrellas</label>
+        <div class="grafica">
+          <div class="barra" style="width: 60%"></div>
+        </div>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-rating-2">
+        <label for="filtro-rating-2">2 estrellas</label>
+        <div class="grafica">
+          <div class="barra" style="width: 40%"></div>
+        </div>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-rating-1">
+        <label for="filtro-rating-1">1 estrella</label>
+        <div class="grafica">
+          <div class="barra" style="width: 20%"></div>
+        </div>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <input type="checkbox" id="filtro-genero-accion">
+        <label for="filtro-genero-accion">Acción</label>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-genero-comedia">
+        <label for="filtro-genero-comedia">Comedia</label>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-genero-drama">
+        <label for="filtro-genero-drama">Drama</label>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-genero-ciencia-ficcion">
+        <label for="filtro-genero-ciencia-ficcion">Ciencia ficción</label>
+      </li>
+    </ul>
+    
+    <textarea id="filtro-palabras-clave" placeholder="Palabras clave"></textarea>
+    
+    <button id="btn-aplicar-filtros">Aplicar filtros</button>
+  </div>
+    <div class="main">
+      <div class="gallery">
+        
+        <a>
+            <img src="../../static/accounts/scarymovie.jpg" alt="Descripción de la imagen">
+            <p>
+              <select  id="movie1-rating">
+                <option value=0>Seleccionar Estrellas</option>
+                <option value=1>1 Estrella</option>
+                <option value=2>2 Estrellas</option>
+                <option value=3>3 Estrellas</option>
+                <option value=4>4 Estrellas</option>
+                <option value=5>5 Estrellas</option>
+              </select>
+            </p>
+        </a>
+        <a>
+          <img src="../../static/accounts/prettywoman.jpg" alt="Descripción de la imagen">
+          <p>
+            <select  id="movie2-rating">
+              <option value=0>Seleccionar Estrellas</option>
+                <option value=1>1 Estrella</option>
+                <option value=2>2 Estrellas</option>
+                <option value=3>3 Estrellas</option>
+                <option value=4>4 Estrellas</option>
+                <option value=5>5 Estrellas</option>
+            </select>
+          </p>
+      </a>
+      <a>
+          <img src="../../static/accounts/senordelosanillos.jpg" alt="Descripción de la imagen">
+          <p>
+            <select  id="movie3-rating">
+              <option value=0>Seleccionar Estrellas</option>
+                <option value=1>1 Estrella</option>
+                <option value=2>2 Estrellas</option>
+                <option value=3>3 Estrellas</option>
+                <option value=4>4 Estrellas</option>
+                <option value=5>5 Estrellas</option>
+            </select>
+          </p>
+      </a>
+      <a>
+        <img src="../../static/accounts/benajaminbutton.jpg" alt="Descripción de la imagen">
+        <p>
+          <select  id="movie4-rating">
+            <option value=0>Seleccionar Estrellas</option>
+              <option value=1>1 Estrella</option>
+              <option value=2>2 Estrellas</option>
+              <option value=3>3 Estrellas</option>
+              <option value=4>4 Estrellas</option>
+              <option value=5>5 Estrellas</option>
+          </select>
+        </p>
+    </a>
+      <a >
+        <img src="../../static/accounts/interestelar.jpg" alt="Descripción de la imagen">
+        <p>
+          <select  id="movie5-rating">
+            <option value=0>Seleccionar Estrellas</option>
+            <option value=1>1 Estrella</option>
+            <option value=2>2 Estrellas</option>
+            <option value=3>3 Estrellas</option>
+            <option value=4>4 Estrellas</option>
+            <option value=5>5 Estrellas</option>
+          </select>
+        </p>
+    </a>
+      <a >
+        <img src="../../static/accounts/reyleon.jpg" alt="Descripción de la imagen">
+        <p>
+          <select  id="movie6-rating">
+            <option value=0>Seleccionar Estrellas</option>
+            <option value=1>1 Estrella</option>
+            <option value=2>2 Estrellas</option>
+            <option value=3>3 Estrellas</option>
+            <option value=4>4 Estrellas</option>
+            <option value=5>5 Estrellas</option>
+          </select>
+        </p>
+    </a>
+    <a >
+      <img src="../../static/accounts/up.jpg" alt="Descripción de la imagen">
+      <p>
+        <select  id="movie7-rating">
+          <option value=0>Seleccionar Estrellas</option>
+          <option value=1>1 Estrella</option>
+          <option value=2>2 Estrellas</option>
+          <option value=3>3 Estrellas</option>
+          <option value=4>4 Estrellas</option>
+          <option value=5>5 Estrellas</option>
+        </select>
+      </p>
+  </a>
+  <a >
+    <img src="../../static/accounts/coco.jpg" alt="Descripción de la imagen">
+    <p>
+      <select  id="movie8-rating">
+        <option value=0>Seleccionar Estrellas</option>
+        <option value=1>1 Estrella</option>
+        <option value=2>2 Estrellas</option>
+        <option value=3>3 Estrellas</option>
+        <option value=4>4 Estrellas</option>
+        <option value=5>5 Estrellas</option>
+      </select>
+    </p>
+</a>
+<a >
+  <img src="../../static/accounts/inception.jpg" alt="Descripción de la imagen">
+  <p>
+    <select  id="movie9-rating">
+      <option value=0>Seleccionar Estrellas</option>
+      <option value=1>1 Estrella</option>
+      <option value=2>2 Estrellas</option>
+      <option value=3>3 Estrellas</option>
+      <option value=4>4 Estrellas</option>
+      <option value=5>5 Estrellas</option>
+    </select>
+  </p>
+</a>
+<a >
+  <img src="../../static/accounts/blackswan.jpg" alt="Descripción de la imagen">
+  <p>
+    <select  id="movie10-rating">
+      <option value=0>Seleccionar Estrellas</option>
+      <option value=1>1 Estrella</option>
+      <option value=2>2 Estrellas</option>
+      <option value=3>3 Estrellas</option>
+      <option value=4>4 Estrellas</option>
+      <option value=5>5 Estrellas</option>
+    </select>
+  </p>
+</a>
+<a >
+  <img src="../../static/accounts/laberinto.jpg" alt="Descripción de la imagen">
+  <p>
+    <select  id="movie11-rating">
+      <option value=0>Seleccionar Estrellas</option>
+      <option value=1>1 Estrella</option>
+      <option value=2>2 Estrellas</option>
+      <option value=3>3 Estrellas</option>
+      <option value=4>4 Estrellas</option>
+      <option value=5>5 Estrellas</option>
+    </select>
+  </p>
+</a>
+<a >
+  <img src="../../static/accounts/walle.jpg" alt="Descripción de la imagen">
+  <p>
+    <select  id="movie12-rating">
+      <option value=0>Seleccionar Estrellas</option>
+      <option value=1>1 Estrella</option>
+      <option value=2>2 Estrellas</option>
+      <option value=3>3 Estrellas</option>
+      <option value=4>4 Estrellas</option>
+      <option value=5>5 Estrellas</option>
+    </select>
+  </p>
+</a>
+<a >
+  <img src="../../static/accounts/budapest.jpg" alt="Descripción de la imagen">
+  <p>
+    <select  id="movie13-rating">
+      <option value=0>Seleccionar Estrellas</option>
+      <option value=1>1 Estrella</option>
+      <option value=2>2 Estrellas</option>
+      <option value=3>3 Estrellas</option>
+      <option value=4>4 Estrellas</option>
+      <option value=5>5 Estrellas</option>
+    </select>
+  </p>
+</a>
+<a >
+  <img src="../../static/accounts/thelambs.jpg" alt="Descripción de la imagen">
+  <p>
+    <select  id="movie14-rating">
+      <option value=0>Seleccionar Estrellas</option>
+      <option value=1>1 Estrella</option>
+      <option value=2>2 Estrellas</option>
+      <option value=3>3 Estrellas</option>
+      <option value=4>4 Estrellas</option>
+      <option value=5>5 Estrellas</option>
+    </select>
+  </p>
+</a>
+<a >
+  <img src="../../static/accounts/mononoke.jpg" alt="Descripción de la imagen">
+  <p>
+    <select  id="movie15-rating">
+      <option value=0>Seleccionar Estrellas</option>
+      <option value=1>1 Estrella</option>
+      <option value=2>2 Estrellas</option>
+      <option value=3>3 Estrellas</option>
+      <option value=4>4 Estrellas</option>
+      <option value=5>5 Estrellas</option>
+    </select>
+  </p>
+</a>
+<a >
+  <img src="../../static/accounts/inception.jpg" alt="Descripción de la imagen">
+  <p>
+    <select  id="movie16-rating">
+      <option value=0>Seleccionar Estrellas</option>
+      <option value=1>1 Estrella</option>
+      <option value=2>2 Estrellas</option>
+      <option value=3>3 Estrellas</option>
+      <option value=4>4 Estrellas</option>
+      <option value=5>5 Estrellas</option>
+    </select>
+  </p>
+</a>
+<a >
+  <img src="../../static/accounts/chihiro.jpg" alt="Descripción de la imagen">
+  <p>
+    <select  id="movie17-rating">
+      <option value=0>Seleccionar Estrellas</option>
+      <option value=1>1 Estrella</option>
+      <option value=2>2 Estrellas</option>
+      <option value=3>3 Estrellas</option>
+      <option value=4>4 Estrellas</option>
+      <option value=5>5 Estrellas</option>
+    </select>
+  </p>
+</a>
+<a >
+  <img src="../../static/accounts/hop.jpg" alt="Descripción de la imagen">
+  <p>
+    <select  id="movie18-rating">
+      <option value=0>Seleccionar Estrellas</option>
+      <option value=1>1 Estrella</option>
+      <option value=2>2 Estrellas</option>
+      <option value=3>3 Estrellas</option>
+      <option value=4>4 Estrellas</option>
+      <option value=5>5 Estrellas</option>
+    </select>
+  </p>
+</a>
+<a >
+  <img src="../../static/accounts/manonwire.jpg" alt="Descripción de la imagen">
+  <p>
+    <select  id="movie19-rating">
+      <option value=0>Seleccionar Estrellas</option>
+      <option value=1>1 Estrella</option>
+      <option value=2>2 Estrellas</option>
+      <option value=3>3 Estrellas</option>
+      <option value=4>4 Estrellas</option>
+      <option value=5>5 Estrellas</option>
+    </select>
+  </p>
+</a>
+<a >
+  <a >
+            <img src="../../static/accounts/xflies.jpg" alt="Descripción de la imagen">
+            <p>
+              <select  id="movie20-rating">
+                <option value=0>Seleccionar Estrellas</option>
+                <option value=1>1 Estrella</option>
+                <option value=2>2 Estrellas</option>
+                <option value=3>3 Estrellas</option>
+                <option value=4>4 Estrellas</option>
+                <option value=5>5 Estrellas</option>
+              </select>
+            </p>
+        </a>
+    
+    </div>
+    <form id="rating-form" action="{% url 'resultado' %}" method="post">
+      {% csrf_token %}
+      <!-- ... Resto del formulario ... -->
+      <button type="button" onclick="submitForm()">Enviar calificaciones</button>
+    </form>
+    
+    <script src="../../static/script.js"></script>
+    </div>
+    <br>
+    </div>
+    
+  </div>
+  
+  <div class="footer">
+    <h2>Grupo Progra</h2>
+  </div>
+
+</body>
+</html>
