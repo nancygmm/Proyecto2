@@ -10,3 +10,11 @@ function submitForm() {
 
     const datos = [];
 }
+
+for (var i = 0; i < rating.length; i++) {
+    if (rating[i] > 0) {
+        var nuevoElemento = [peliculas[i],rating[i]]
+        datos.push(nuevoElemento);
+        total ++;
+}
+}
