@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.getElementById('openButton').addEventListener('click', function() {
+  var fileInput = document.getElementById('fileInput');
+  var file = fileInput.files[0];
+
+  if (file) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      var contents = e.target.result;
+      console.log(contents); // Haz algo con el contenido del archivo
+    };
+    
+    reader.readAsText(file);
+  } else {
+    console.log('No se seleccionó ningún archivo.');
+  }
+});
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
