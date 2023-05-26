@@ -1,5 +1,6 @@
 import ManejoBd
 import random
+import numpy as np
 manejo=ManejoBd.manejoBd()
 dicc=manejo.obtenerRelaciones()
 diccionarioGeneros1={}
@@ -62,19 +63,15 @@ def puntaje10(diccionario,listaLiked):
 
 
 def resultante (lista):
-    matrizF = []
     matriz = puntaje10(peliculasGeneros, listaMeGusta)
     lista = [0.3, 0.4, 0.2, 0.7, 0.6, 0.1, 0.9, 0.3, 0.7, 0.5, 0.4, 0.8, 0.3, 0.2]
 
-    for decimal in lista:
-        resp = []
-        for columna in range(len(matriz[0])):
-            respC = []
-            for fila in range(len(matriz)):
-                respC.append(decimal*matriz[fila][columna])
-            resp.append(respC)
-        matrizF.append(resp)
-    return matrizF
+    resp = np.zeros_like(matriz, dtype=float)
+
+    for i in range(len(lista)):
+        resp[:, i] = matriz[: i ] * lista[i]
+
+    print(resp)
 
 
 
