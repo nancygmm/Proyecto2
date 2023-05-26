@@ -24,7 +24,7 @@ class Main:
 
             usuario = BD.obtenerUsuarios()
             nombre=input("Ingresa el nombre del usuario ")
-            passw=input("Ingresa el password ")
+            passw=input("Ingresa el password")
             
             if nombre in usuario:
                 print("Bienvenido a UVG-FLIX")
@@ -40,7 +40,7 @@ class Main:
         elif seleccion=="2":
             nombre=input("Ingresa el nombre del nuevo usuario: ")
             passwN=input("Ingresa la nueva contraseña: ")
-            BD.crearUsuario(self,nombre)
+            BD.crearUsuario(nombre)
             contraseñas.append(passwN)
             
                 
