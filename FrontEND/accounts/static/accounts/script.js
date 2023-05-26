@@ -18,3 +18,7 @@ for (var i = 0; i < rating.length; i++) {
         total ++;
 }
 }
+if (total > 3 | total < 3) {
+    alert('Por favor, seleccione una calificacion para 3 peliculas.');
+    return;
+    }
