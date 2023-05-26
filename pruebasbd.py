@@ -1,4 +1,5 @@
 import ManejoBd
+import numpy as np
 import random
 manejo=ManejoBd.manejoBd()
 dicc=manejo.obtenerRelaciones()
@@ -83,7 +84,21 @@ def calcularPob(matriz):
 l=calcularPob(matrizValores)
 
 
+def resultante (lista):
+    matriz = puntaje10(peliculasGeneros, listaMeGusta)
+    #lista = [0.3, 0.4, 0.2, 0.7, 0.6, 0.1, 0.9, 0.3, 0.7, 0.5, 0.4, 0.8, 0.3, 0.2]
 
+    resp = np.zeros_like(matriz, dtype=float)
+
+    for i in range(len(lista)):
+        resp[:, i] = matriz[: i ] * lista[i]
+
+    return resp
+
+
+
+
+print(resultante(l))
 
 
 
