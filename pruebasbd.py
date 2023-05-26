@@ -48,7 +48,7 @@ def diccionarioInicialGeneros():
     xxx=manejo.obtenerGeneros()
     dic={}
     for i in xxx:
-        dic[i]=0
+        dic[i]=0.0
     return dic
 
 def puntaje10(diccionario,listaLiked):
@@ -79,28 +79,49 @@ def calcularPob(matriz):
         suma=0
         suma=matriz[0][i]+matriz[1][i]+matriz[2][i]
         lista.append(round(suma/15,2))
+        
     return lista
 
 l=calcularPob(matrizValores)
 
 
 def resultante (lista):
-    matriz = puntaje10(peliculasGeneros, listaMeGusta)
-    #lista = [0.3, 0.4, 0.2, 0.7, 0.6, 0.1, 0.9, 0.3, 0.7, 0.5, 0.4, 0.8, 0.3, 0.2]
+    xxx=manejo.obtenerPeliculas()
+    p1=xxx[random.randint(0,len(xxx)-1)]
+    p2=xxx[random.randint(0,len(xxx)-1)]
+    p3=xxx[random.randint(0,len(xxx)-1)]
+    listaP=[p1,p2,p3]
 
-    resp = np.zeros_like(matriz, dtype=float)
-
-    for i in range(len(lista)):
-        resp[:, i] = matriz[: i ] * lista[i]
-
-    return resp
-
-
-
-
-print(resultante(l))
+    matriz = puntaje10(peliculasGeneros, xxx)
+    for i in range(len(matriz)):
+        for j in range(len(matriz[0])):
+            val=matriz[i][j]
+            matriz[i][j]=lista[j]*val
 
 
+    return matriz,xxx
 
-    
+print(l)
+r=resultante(l)[0]
+print(r)
+
+listaOpciones=resultante(l)[1]
+
+def sumaFila(matriz):
+    listaSumas=[]
+    for i in matriz:
+        listaSumas.append(sum(i))
+    return listaSumas
+t=sumaFila(r)
+print(t)
+print(listaOpciones)
+
+
+print("\n#######################  RESULTADO  #######################")
+
+print(f"La pelicula que te recomendamos ver es: {listaOpciones[t.index(max(t))]}")
+
+
+
+
 
