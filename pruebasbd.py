@@ -118,10 +118,17 @@ print(listaOpciones)
 
 
 print("\n#######################  RESULTADO  #######################")
+pos=t.index(max(t))
+print(f"La pelicula que te recomendamos ver es: {listaOpciones[pos]}")
 
-print(f"La pelicula que te recomendamos ver es: {listaOpciones[t.index(max(t))]}")
-
-
+def mandarFront(lista,posicion):
+    posicionNueva=0
+    if (len(lista)-1)==posicion:
+        posicionNueva=0
+    else:
+        posicionNueva=posicion+1
+    return posicionNueva
+    
 
 
 
