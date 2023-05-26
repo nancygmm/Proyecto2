@@ -71,7 +71,7 @@ def resultante (lista):
     for i in range(len(lista)):
         resp[:, i] = matriz[: i ] * lista[i]
 
-    print(resp)
+    return resp
 
 
 
