@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>POPCORN & CHILL</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+  }
+
+  .header-logo {
+    margin-right: 5px;
+  }
+
+  .header-title {
+    flex-grow: 1;
+    font-size: 60px;
+  }
+  .titulo {
+    flex-grow: 1;
+    font-size: 40px;
+    color: black;
+  }
+
+
+
+  .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+  background: #262b2a;
+  color: white;
+}
+
+.form-container {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.search-form {
+  display: inline-block;
+}
+
+.authentication-container {
+  margin-left: 20px;
+}
+
+.logout-link,
+.login-link {
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+}
+
+.logout-link:hover,
+.login-link:hover {
+  text-decoration: underline;
+}
+
+
+
+.row {  
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap; 
+  flex-wrap: wrap;
+}
+
+
+.side {
+  -ms-flex: 20%;
+  flex: 20%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+
+.main {   
+  -ms-flex: 70%; 
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+
+.xnamefname {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+
+
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20mm;
+  margin-top: 1mm; /* Adjust the top margin as needed */
+}
+.search-form {
+  text-align: center;
+  font-size: 24px; /* Adjust the font size as desired */
+}
+.palabra-buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 30px 20px;
+}
+
+.palabra-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    
+}
+.rating-buttons {
+    display: flex;
+}
+
+.rating-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ffd700;
+    margin-right: 5px;
+    padding: 0;
+}
+
+.rating-button:hover {
+    color: #ffcc00;
+}
+
+
+
+#menu-filtros {
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  width: 250px;
+}
+
+#menu-filtros h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#menu-filtros ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 10px;
+}
+
+#menu-filtros li {
+  margin-bottom: 5px;
+}
+
+#menu-filtros label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+#menu-filtros input[type="checkbox"] {
+  vertical-align: middle;
+}
+
+#menu-filtros textarea {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+#btn-aplicar-filtros {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#btn-aplicar-filtros:hover {
+  background-color: #45a049;
+}
+
+.grafica {
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.barra {
+  height: 100%;
+  background-color: #4CAF50;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gallery a {
+    text-decoration: none;
+    margin: 10px;
+    text-align: center;
+}
+
+.gallery img {
+    width: 200px;
+    height: 200px;
+}
+
+.gallery p {
+    margin-top: 5px;
+}
+
+select {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: #333;
+  font-size: 16px;
+}
+
+option {
+  padding: 10px;
+}
+
+.image-with-text {
+  background-image: url('ruta-de-la-imagen.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 400px; /* Ajusta la altura según sea necesario */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px; /* Ajusta el tamaño de la fuente según sea necesario */
+  color: #fff; /* Ajusta el color del texto según sea necesario */
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">
+    <a href="{% url 'resultado' %}">
+      <img src="../../static/accounts/poporopos.jpg" alt="Logo" height="125px" width="125px">
+    </a>
+    
+  </div>
+    <h1 class="header-title">POPCORN & CHILL</h1>
+  {% if user.is_authenticated %}
+    Hola {{ user.username }}!
+    {% else %}
+    <p>Progra UVG</p>
+    {% endif %}
+
+</div>
+
+<div class="navbar">
+  <div class="form-container">
+    <form class="search-form">
+      <input type="text" name="search" placeholder="Buscar..." style="font-size: 24px;">
+      <input type="submit" value="Buscar" style="font-size: 24px;">
+    </form>
+  </div>
+  <div class="authentication-container">
+    {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}" class="logout-link">Cerrar Sesión</a>
+    {% else %}
+      <a href="{% url 'login' %}" class="login-link">Inicio de Sesión / Registrarse</a>
+    {% endif %}
+  </div>
+</div>
+
+<div class="row">
+  <div id="menu-filtros">
+    <h3>Filtros</h3>
+    <ul>
+      <li>
+        <input type="checkbox" id="filtro-anio-otros">
+        <label for="filtro-anio-otros">Otros años...</label>
+        <input type="text" id="filtro-anio-inicial" placeholder="Desde">
+        <input type="text" id="filtro-anio-final" placeholder="Hasta">
+      </li>
+    </ul>
+    
+    <ul id="rating-filtro">
+      <li>
+        <input type="checkbox" id="filtro-rating-5">
+        <label for="filtro-rating-5">5 estrellas</label>
+        <div class="grafica">
+          <div class="barra" style="width: 100%"></div>
+        </div>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-rating-4">
+        <label for="filtro-rating-4">4 estrellas</label>
+        <div class="grafica">
+          <div class="barra" style="width: 80%"></div>
+        </div>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-rating-3">
+        <label for="filtro-rating-3">3 estrellas</label>
+        <div class="grafica">
+          <div class="barra" style="width: 60%"></div>
+        </div>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-rating-2">
+        <label for="filtro-rating-2">2 estrellas</label>
+        <div class="grafica">
+          <div class="barra" style="width: 40%"></div>
+        </div>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-rating-1">
+        <label for="filtro-rating-1">1 estrella</label>
+        <div class="grafica">
+          <div class="barra" style="width: 20%"></div>
+        </div>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <input type="checkbox" id="filtro-genero-accion">
+        <label for="filtro-genero-accion">Acción</label>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-genero-comedia">
+        <label for="filtro-genero-comedia">Comedia</label>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-genero-drama">
+        <label for="filtro-genero-drama">Drama</label>
+      </li>
+      <li>
+        <input type="checkbox" id="filtro-genero-ciencia-ficcion">
+        <label for="filtro-genero-ciencia-ficcion">Ciencia ficción</label>
+      </li>
+    </ul>
+    
+    <textarea id="filtro-palabras-clave" placeholder="Palabras clave"></textarea>
+    
+    <button id="btn-aplicar-filtros">Aplicar filtros</button>
+  </div>
+  
+  <div class="main">
+    <div style="text-align: center;">
+      <h1 class="titulo">Pelicula Recomendada</h1>
+      <script src="../../static/script.js"></script>
+    </div>
+  </div>
+</div>
+  
+  <div class="footer">
+    <h2>Grupo Progra</h2>
+  </div>
+  
+</body>
+</html>
