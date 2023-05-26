@@ -5,5 +5,5 @@ import matplotlib.pyplot as plt
 
 import ManejoBd as bd
 
-
+print("hola")
 
