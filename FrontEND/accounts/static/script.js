@@ -16,6 +16,10 @@ function submitForm() {
             datos.push(nuevoElemento);
             total ++;
     }
+    if (total > 3 | total < 3) {
+      alert('Por favor, seleccione una calificacion para 3 peliculas.');
+    return;
+    }
     
     function crearCSV(datos) {
         // Crear el contenido del archivo CSV
@@ -43,17 +47,6 @@ function submitForm() {
     document.getElementById('rating-form').submit();
 }
 
-for (var i = 0; i < rating.length; i++) {
-    if (rating[i] > 0) {
-        var nuevoElemento = [peliculas[i],rating[i]]
-        datos.push(nuevoElemento);
-        total ++;
-}
-}
-if (total > 3 | total < 3) {
-    alert('Por favor, seleccione una calificacion para 3 peliculas.');
- return;
-}
 
 }
 
