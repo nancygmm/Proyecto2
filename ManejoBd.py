@@ -81,3 +81,20 @@ class manejoBd:
                 listaGeneros.append(i['name'])
                 diccionarioPeliculaGenero[peli]=listaGeneros   
        return diccionarioPeliculaGenero
+    
+
+    def obtenerUsuarios(self):
+      driver=self.conectar()
+
+      with driver.session() as session:
+            # Ejecutar una consulta Cypher para obtener los nodos de tipo usuario
+            query = "MATCH (u:Usuario) RETURN u"
+            result = session.run(query)
+
+            # Recorrer los resultados y obtener los nodos de tipo usuario
+            usuarios = []
+            for record in result:
+                usuario = record["u"]
+                usuarios.append(usuario['name'])
+            
+            

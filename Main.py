@@ -1,6 +1,7 @@
 import os
 import usuarios
 import cuentas
+import ManejoBd
 from neo4j import GraphDatabase
 
 class Main: 
@@ -8,41 +9,45 @@ class Main:
     def __init__(self):
         self.menu()
         self.banderaPrimeraVez=False
-    def index(self):
-        pass
     def menu(self):
         os.system("clear")
         print("############################       BIENVENIDO A UVG-FLIX          ########################")
-        print("1. Ya tienes cuenta :D ")
-        print("2. No tienes cuenta D: ")
+        print("1. Iniciar sesion")
+        print("2. Crear cuenta")
 
-        #PRUEBA
-        lista=["prueba1@gmail.com","prueba2@gmail.com","prueba3@gmail.com","prueba4@gmail.com"]##<--Tiene que traerlo de la base de datos 
+        BD = ManejoBd.manejoBd()
+
+        contraseñas = []
+        
         seleccion=input("--> ")
         if seleccion=="1":
-            correo=input("Ingresa el correo ")
-            passw=input("Ingresa el password ")
-            if correo in lista:
-                print("Si existe ")
+
+            usuario = BD.obtenerUsuarios()
+            nombre=input("Ingresa el nombre del usuario ")
+            passw=input("Ingresa el password")
+            
+            if nombre in usuario:
+                print("Bienvenido a UVG-FLIX")
             else:
                 print("La cuenta no existe, es necesario crear una ")
+            
+            for i in contraseñas:
+                if passw != contraseñas[i]:
+                    print("Contraseña incorrecta, intente de nuevo")
+                else:
+                    print("Bienvenido")
 
         elif seleccion=="2":
-            nombre=input("Ingresa tu nombre ")
-            apellido=input("Ingresa tu apellido ")
-            edad=input("Ingresa tu edad ")
-            tipo=""
-            if int(edad)>=15 and int(edad)<=18:
-                tipo="b"
-            elif int(edad)>=18:
-                tipo="a"
-            else:
-                tipo="c"
+            nombre=input("Ingresa el nombre del nuevo usuario: ")
+            passwN=input("Ingresa la nueva contraseña: ")
+            BD.crearUsuario(nombre)
+            contraseñas.append(passwN)
             
                 
 
         else:
             print("Ingresa un valor correcto ")
+            
 Main()
     
     
