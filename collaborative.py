@@ -1,3 +1,4 @@
+# Importación de librerias a usar y objetos de otras clases 
 import ManejoBd
 import numpy as np
 import random
@@ -11,10 +12,12 @@ diccionarioGeneros1={}
 
 
 
-
+#creación de variables
 pelis=list(dicc.keys())
 listaMeGusta=manejoCsv.abrirSeparar()[0]
 listaPuntajes=manejoCsv.abrirSeparar()[1]
+
+#funcion que ontiene los generos de las peliculas
 def obtenerGeneroPelicula():
     diccionarioGenero={}
     rel=manejo.obtener_relaciones_pelicula_genero()
@@ -26,6 +29,7 @@ def obtenerGeneroPelicula():
     return diccionarioGenero
 peliculasGeneros=obtenerGeneroPelicula()
 
+#funcion que retorna un diccionario con los generos
 def diccionarioInicialGeneros():
     xxx=manejo.obtenerGeneros()
     dic={}
@@ -33,6 +37,7 @@ def diccionarioInicialGeneros():
         dic[i]=0.0
     return dic
 
+#funcion que retorna una matriz de 1 y 0 dependiendo de los generos de las peliculas seleccionadas
 def puntaje10(diccionario,listaLiked):
     diccionarioMeGusta={}
     matriz=[]
@@ -44,6 +49,7 @@ def puntaje10(diccionario,listaLiked):
         matriz.append(list(d.values()))
     return matriz
 
+#retorna la matriz multiplicada con los puntajes del usuario
 def multiplicarPuntaje(puntajes):
     matrizAusar=puntaje10(peliculasGeneros,listaMeGusta)
     for i in range(len(puntajes)):
@@ -54,7 +60,7 @@ def multiplicarPuntaje(puntajes):
 
 matrizValores=multiplicarPuntaje(listaPuntajes)
 
-
+#funcion que suma los valores de las columnas y los convierte en valores entre 0 y 1 y retorna una lista con esos valores
 def calcularPob(matriz):
     lista=[]
     for i in range(len(matriz[0])):
@@ -66,7 +72,7 @@ def calcularPob(matriz):
 
 l=calcularPob(matrizValores)
 
-
+#multiplica los valores de la lista previa con cada columna de la matriz de las posibles recomendaciones
 def resultante (lista):
     xxx=manejo.obtenerPeliculas()
     p1=xxx[random.randint(0,len(xxx)-1)]
@@ -83,12 +89,13 @@ def resultante (lista):
 
     return matriz,xxx
 
-
+#se muestran los resultados de la multiplicacion
 r=resultante(l)[0]
 
-
+#se muestran las posibles recomendaciones
 listaOpciones=resultante(l)[1]
 
+#funcion que suma la fila para obtener los puntajes finales de cada posible recomendacion 
 def sumaFila(matriz):
     listaSumas=[]
     for i in matriz:
@@ -98,11 +105,12 @@ t=sumaFila(r)
 print(t)
 print(listaOpciones)
 
-
+#se muestra la recomendacion
 print("\n#######################  RESULTADO  #######################")
 pos=t.index(max(t))
 print(f"La pelicula que te recomendamos ver es: {listaOpciones[pos]}")
 
+#manda al front la posicion de la pelicula recomendada
 def mandarFront(lista,posicion):
     posicionNueva=0
     if (len(lista)-1)==posicion:
