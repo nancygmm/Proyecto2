@@ -1,3 +1,4 @@
+#importar las librerias a usar
 import os
 import usuarios
 import cuentas
@@ -6,9 +7,12 @@ from neo4j import GraphDatabase
 
 class Main: 
     
+    #constructor
     def __init__(self):
         self.menu()
         self.banderaPrimeraVez=False
+    
+    #menu a mostrar
     def menu(self):
         os.system("clear")
         print("############################       BIENVENIDO A UVG-FLIX          ########################")
@@ -22,10 +26,12 @@ class Main:
         seleccion=input("--> ")
         if seleccion=="1":
 
+            #inicia sesión
             usuario = BD.obtenerUsuarios()
             nombre=input("Ingresa el nombre del usuario ")
             passw=input("Ingresa el password")
             
+            #verifica que las credenciales si existan 
             if nombre in usuario:
                 print("Bienvenido a UVG-FLIX")
             else:
@@ -37,6 +43,7 @@ class Main:
                 else:
                     print("Bienvenido")
 
+        #crea el nuevo usuario
         elif seleccion=="2":
             nombre=input("Ingresa el nombre del nuevo usuario: ")
             passwN=input("Ingresa la nueva contraseña: ")
