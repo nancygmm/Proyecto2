@@ -1,7 +1,9 @@
+#importar la libreria a usar
+
 import csv
 
 
-
+#funcion que abre, lee, recorre y guarda los datos de un csv en una lista
 def abrirSeparar():
     archivo=open("archivo.csv",'r',encoding='UTF-8')
     leer=csv.reader(archivo)
