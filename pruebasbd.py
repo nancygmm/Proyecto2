@@ -1,6 +1,9 @@
+#importar librerias a usar
+
 import ManejoBd
 import numpy as np
 import random
+#creacion de objetos
 manejo=ManejoBd.manejoBd()
 dicc=manejo.obtenerRelaciones()
 diccionarioGeneros1={}
@@ -15,6 +18,7 @@ pelis=list(dicc.keys())
 
 listaMeGusta=[]
 
+#le pregunta al usuario que si le gusta la opción mostrada
 contador=0
 while contador<3:
     ra=random.randint(0,len(pelis)-1)
